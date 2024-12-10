@@ -1,6 +1,7 @@
  // Appointments.js
 import React, { useState } from "react";
 import DoctorSidebar from "../../Components/Sidebars/DoctorSidebar";
+import { RiEyeFill } from "react-icons/ri";
 
 const Appointments = () => {
   const [formData, setFormData] = useState({
@@ -82,6 +83,11 @@ const Appointments = () => {
     console.log(`Performing ${action} action for appointment ${appointment.id}`);
   };
 
+  const handleViewDetails = (appointment) => {
+        console.log(`Viewing details for appointment ${appointment.id}`);
+      };
+    
+
   return (
     <div
       className="min-h-screen bg-gray-100 overflow-y-scroll no-scrollbar"
@@ -112,6 +118,7 @@ const Appointments = () => {
                   <th className="p-4">Status</th>
                   <th className="p-4">Diagnosis</th>
                   <th className="p-4">Actions</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -143,24 +150,34 @@ const Appointments = () => {
                     </td>
                     <td className="p-4">{appointment.diagnosis}</td>
                     <td className="p-4">
-                      <div className="flex gap-3">
-                        {appointment.actions.map((action, idx) => (
-                          <button
-                            key={idx}
-                            className={`w-28 h-7 rounded-full text-sm ${
-                              action === "Reschedule"
-                                ? "bg-[#D1C3EB] text-black"
-                                : action === "View"
-                                ? "bg-[#01225B] text-white"
-                                : "bg-red-100 text-red-700"
-                            }`}
-                            onClick={() => handleActionClick(action, appointment)}
-                          >
-                            {action}
-                          </button>
-                        ))}
-                      </div>
-                    </td>
+  <div className="flex gap-3">
+    {appointment.status !== "Completed" &&
+      appointment.actions.map((action, idx) => (
+        <button
+          key={idx}
+          className={`w-28 h-7 rounded-full text-sm ${
+            action === "Reschedule"
+              ? "bg-[#D1C3EB] text-black"
+              : action === "View"
+              ? "bg-[#01225B] text-white"
+              : "bg-red-100 text-red-700"
+          }`}
+          onClick={() => handleActionClick(action, appointment)}
+        >
+          {action}
+        </button>
+      ))}
+  </div>
+</td>
+<td className="p-4">
+{/* Eye Icon for Viewing Details */}
+<RiEyeFill
+      className="text-gray-700 cursor-pointer"
+      size={20}
+      onClick={() => handleViewDetails(appointment)}
+    />
+</td>
+
                   </tr>
                 ))}
               </tbody>
@@ -173,3 +190,6 @@ const Appointments = () => {
 };
 
 export default Appointments;
+
+
+ 
