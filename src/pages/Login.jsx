@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import ForgotPasswordModal from "./ForgotPasswordModal";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase-config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,6 +41,18 @@ const Login = () => {
       setErrors({ email: "", password: "" });
       // Proceed with form submission
       console.log("Form submitted successfully!");
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("User Info:", user);
+      alert(`Welcome, ${user.displayName}!`);
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+      alert("Sign-in failed. Please try again.");
     }
   };
 
@@ -116,7 +130,7 @@ const Login = () => {
 
           {/* Google Sign-In */}
           <button
-            type="button"
+            type="button"  onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-md hover:bg-gray-100"
           >
             <FcGoogle className="text-red-500 mr-2" />
@@ -149,3 +163,40 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+// login page firebase added should add this in the above code
+
+
+// import React from "react";
+// import { signInWithPopup } from "firebase/auth";
+// import { auth, provider } from "./firebase-config";
+
+// const LoginPage = () => {
+//   const handleGoogleSignIn = async () => {
+//     try {
+//       const result = await signInWithPopup(auth, provider);
+//       const user = result.user;
+//       console.log("User Info:", user);
+//       alert(`Welcome, ${user.displayName}!`);
+//     } catch (error) {
+//       console.error("Error during sign-in:", error);
+//       alert("Sign-in failed. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+//       <h1 className="text-2xl mb-5">Sign in with Google</h1>
+//       <button
+//         onClick={handleGoogleSignIn}
+//         className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+//       >
+//         Sign in with Google
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default LoginPage;

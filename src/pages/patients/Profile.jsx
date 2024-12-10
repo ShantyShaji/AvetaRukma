@@ -79,6 +79,7 @@ const Profile = () => {
              <PersonalInformation
              formData={formData}
              onFormDataChange={handleFormDataChange}
+             
            />
           )}
           {activeTab === "health" && <HealthInformation

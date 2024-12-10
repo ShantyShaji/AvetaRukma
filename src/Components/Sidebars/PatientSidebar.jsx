@@ -9,7 +9,7 @@ import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const PatientSidebar = ({ firstName, lastName }) => {
+const PatientSidebar = ({ firstName, lastName, profilePic }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();  // Get the current route
@@ -59,7 +59,7 @@ const PatientSidebar = ({ firstName, lastName }) => {
 
         <div className="text-center mb-8">
           <img
-            src="/profile.svg"
+            src={profilePic}
             alt="Profile"
             className="w-32 h-32 rounded-full mx-auto mb-5"
           />

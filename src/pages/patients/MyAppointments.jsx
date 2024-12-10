@@ -12,6 +12,7 @@ const MyAppointments = () => {
     age: 25,
     phoneNumber: "9876543210",
     bloodGroup: "A+",
+    profilePic: "/profile.svg",
   });
 
   const [appointments, setAppointments] = useState([
@@ -75,6 +76,7 @@ const MyAppointments = () => {
         <PatientSidebar
           firstName={formData.firstName}
           lastName={formData.lastName}
+          profilePic={formData.profilePic}
         />
 
         <main className="w-full lg:5/6 bg-white p-6 lg:p-8 ml-0 lg:ml-60">
@@ -90,6 +92,7 @@ const MyAppointments = () => {
                   <th className="p-4">Time</th>
                   <th className="p-4">Status</th>
                   <th className="p-4">Action</th>
+                  <th className="p-4"></th>
                 </tr>
               </thead>
               <tbody>

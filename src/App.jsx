@@ -8,7 +8,13 @@ import BookAppointment from "./pages/patients/BookAppointment";
 import MyAppointments from "./pages/patients/MyAppointments";
 import ConsultationRoom from "./pages/patients/ConsultationRoom";
 import PatientNotifications from "./Components/notifications/PatientNotifications";
- 
+import DoctorProfile from "./pages/doctor/DoctorProfile";
+import DoctorNotifications from "./Components/notifications/DoctorNotifications";
+import Dashboard from "./pages/doctor/Dashboard";
+import Appointments from "./pages/doctor/Appointments";
+import ScheduleAvailability from "./pages/doctor/ScheduleAvailability";
+import Payment from "./pages/doctor/Payment";
+import DoctorConsultationRoom from "./pages/doctor/DoctorConsultationRoom";
 
 function App() {
   return (
@@ -23,7 +29,21 @@ function App() {
         <Route path="/patients/MyAppointments" element={<MyAppointments />} />
         <Route path="/patients/ConsultationRoom" element={<ConsultationRoom />} />
         <Route path="/notifications/PatientNotifications" element={<PatientNotifications />} />
+
+        <Route path="/doctor/dashboard" element={<Dashboard />} />
+        <Route path="/doctor/profile" element={<DoctorProfile />} />
+        <Route path="/doctor/appointments" element={<Appointments />} />
+        <Route path="/doctor/schedule" element={<ScheduleAvailability />} />
+        <Route path="/doctor/consultationroom" element={<DoctorConsultationRoom />} />
+        <Route path="/doctor/payment" element={<Payment />} />
+
+
+
   
+
+
+        <Route path="/notifications/DoctorNotifications" element={<DoctorNotifications />} />
+
       </Routes>
     </Router>
   );

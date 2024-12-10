@@ -9,7 +9,7 @@ const NotificationCard = ({ bgColor, message }) => (
       <p className="text-sm">{message}</p>
     </div>
   );
-const PatientNotifications = () => {
+const DoctorNotifications = () => {
   const [formData, setFormData] = useState({
     firstName: "Richard",
     lastName: "Philip",
@@ -100,4 +100,4 @@ const PatientNotifications = () => {
   );
 };
 
-export default PatientNotifications;
+export default DoctorNotifications;
